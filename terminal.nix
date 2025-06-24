@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
 
 {
-# nushell, starship, yazi, zoxide, zellij, helix, atuin, lazygit, lazydocker, neofetch?
+# trash-cli, cp -i, mkdir -p, mv -i, VISUAL=code?, ll=ls -Fls,starship gruvbox rainbow preset
   programs = {
     bash = {
+      enable = true;
+    };
+    fastfetch = {
       enable = true;
     };
     nushell = {
@@ -11,6 +14,11 @@
       environmentVariables = {
         EDITOR = "hx";
       };
+      settings = {
+        show_banner = false;
+        completions.external.enable = true;
+      };
+      extraConfig = "fastfetch";
     };
     starship = {
       enable = true;      
@@ -47,9 +55,16 @@
     btop = {
       enable = true;
     };
+    lazygit = {
+      enable = true;
+    };
+    lazydocker = {
+      enable = true;
+    };
   };
   home.packages = [
     pkgs.dua
+    pkgs.tldr
+    pkgs.trash-cli    
   ];
-
 }
