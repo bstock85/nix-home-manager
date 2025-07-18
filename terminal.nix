@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  # carapace
 # trash-cli, cp -i, mkdir -p, mv -i, VISUAL=code?, ll=ls -Fls,starship gruvbox rainbow preset
   programs = {
     bash = {
@@ -19,9 +20,17 @@
         completions.external.enable = true;
       };
       extraConfig = "fastfetch";
+      shellAliases = {
+        cd = "z";
+        cat = "bat";
+        rm = "trash -v";
+      };
     };
     starship = {
       enable = true;      
+      presets = [
+        "gruvbox-rainbow"
+      ];
     };
     yazi = {
       enable = true;
@@ -48,6 +57,7 @@
       enable = true;
       defaultEditor = true;
       # set theme
+      
     };
     bat = {
       enable = true;
@@ -60,6 +70,10 @@
     };
     lazydocker = {
       enable = true;
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
     };
   };
   home.packages = [
